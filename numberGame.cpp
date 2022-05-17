@@ -2,58 +2,30 @@
 //
 // Created by Devin Jhu
 // Created on May 2022
-// The number game
+// The celcius to fahrenheit calculator
 
 #include <iostream>
-#include <random>
 #include <string>
 
 
 int main() {
-    // this function is a guessing game
-    int guess;
-    int numberAnswer;
-    int counter = 1;
-    std::string guessString;
+    // this function converts celsius to fahrenheit
+    std::string celsiusString;
+    float celsius;
+    float fahrenheit;
 
-    std::random_device rseed;
-    // mersenne_twister
-    std::mt19937 rgen(rseed());
-    // random number between [1,9]
-    std::uniform_int_distribution <int> idist(1 , 9);
-    numberAnswer = idist(rgen);
-
-    std::cout << "The number game";
-    std::cout << "" << std::endl;
-    std::cout << "Guess a number between 1 and 9";
     // input
-    std::cout << "" << std::endl;
-    std::cout << "enter number: ";
-    std::cin >> guessString;
+    std::cout << "enter temperature (celcius): ";
+    std::cin >> celsiusString;
 
     // process & output
-    while (true) {
-        try {
-            guess = std::stoi(guessString);
-            if (guess == numberAnswer) {
-                break;
-            } else if (guess > numberAnswer) {
-                std::cout << "Guess lower" << std::endl;
-            } else if (guess < numberAnswer) {
-                std::cout << "Guess higher" << std::endl;
-            } else {
-                std::cout << "what happened" << std::endl;
-            }
-        } catch (std::invalid_argument) {
-        std::cout << "not a number" << std::endl;
-        }
+    try {
+        celsius = std::stoi(celsiusString);
 
-        std::cout << "Try Again: ";
-        std::cin >> guessString;
-        counter++;
+        fahrenheit = ((9 * celsius) / 5) + 32;
+
+        std::cout << "\n"<< celsius <<"°C is also "<< fahrenheit << "°F ";
+    } catch (std::invalid_argument) {
+    std::cout << "not a temperature" << std::endl;
     }
-
-    // End of game output
-    std::cout << "You win! It took " << counter << " tries." << std::endl;
-    std::cout << "\nDone." << std::endl;
 }
