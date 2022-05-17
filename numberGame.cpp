@@ -8,7 +8,7 @@
 #include <string>
 
 
-int main() {
+float fahrenheit() {
     // this function converts celsius to fahrenheit
     std::string celsiusString;
     float celsius;
@@ -28,4 +28,11 @@ int main() {
     } catch (std::invalid_argument) {
     std::cout << "not a temperature" << std::endl;
     }
+}
+
+int main() {
+    // this function calls the function
+
+    // call conversion
+    fahrenheit();
 }
